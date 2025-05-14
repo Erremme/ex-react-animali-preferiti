@@ -14,10 +14,18 @@
      <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
         <!--script-->
         <script type="text/babel">
-            
+        
             const List = () => {
-                const animals = ['Cane', 'Gatto', 'Coniglio', 'Pesce', 'Uccello'];
+                const [animals, setAnimals] = React.useState([]);
+                const addAnimal = () => {
+                    const randomIndex = Math.floor(Math.random() * animalsChoices.length);
+                    const newAnimal = animalsChoices[randomIndex];
+                    setAnimals([...animals, newAnimal]);
+                }
+                const animalsChoices  = ['Cane', 'Gatto', 'Coniglio', 'Pesce', 'Uccello'];
                 return (
+                    <div>
+                        <button onClick= {addAnimal} >Aggiungi Animale</button>
                     <details>
                         <summary>Animali</summary>
                         <ul>
@@ -30,9 +38,12 @@
                             })}
                         </ul>
                     </details>
+                    </div>
                 )
+
+                
                   
-                console.log(animals);
+               
 
             }
 
